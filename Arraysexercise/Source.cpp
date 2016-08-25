@@ -80,18 +80,19 @@ int main()
 		cout << bigNum << endl << smallNum << endl;
 	*/
 //Question 6
-	int grid[3][3] = { {1, 2, 3} , {4, 5, 6} , {7 , 8 , 9} };
-
+	/*int grid[3][3] = { {1, 2, 3} ,
+						{4, 5, 6} , 
+						{7 , 8 , 9} };
 	for (int row = 0; row < 3; ++row)
 	{
 		for (int col = 0; col < 3; ++col)
 		{
-			cout << grid[3][3] << endl;
-
+			cout << grid[row][col];
 		}
+		cout << endl;
 	}
 	system("pause");
-	return 0;
+	return 0;*/	
 
 	
 
