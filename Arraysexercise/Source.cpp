@@ -1,6 +1,117 @@
 #include <iostream>
 
 using namespace std;
+const int numdays = 7;
+
+int avgfooddragon(int id, int dragon[][7])
+{
+	int totaleaten = 0;
+	int avgalldragon = 0;
+	for (int i = 0; i < id; i++)
+	{
+		for (int j = 0; j < numdays; j++)
+		{
+			totaleaten += dragon[i][j];
+		}
+	}
+	avgalldragon = (float)totaleaten / (float)numdays;
+	return avgalldragon;
+}
+int avgfoodper (int totaldrag1[7], int totaldrag2[7], int totaldrag3[7])
+{
+	int totaleatendrag1 = 0;
+	int totaleatendrag2 = 0;
+	int totaleatendrag3 = 0;
+	int avgfood1 = 0;
+	int avgfood2 = 0;
+	int avgfood3 = 0;
+	for (int i = 0; i < numdays ; i++)
+	{
+		totaleatendrag1 += totaldrag1[7];
+		totaleatendrag2 += totaldrag2[7];
+		totaleatendrag3 += totaldrag3[7];
+	}
+	avgfood1 = totaleatendrag1 / numdays;
+	avgfood2 = totaleatendrag2 / numdays;
+	avgfood3 = totaleatendrag3 / numdays;
+
+	return avgfood1, avgfood2, avgfood3;
+}
+int leastamount(int dragondiet[][7])
+{
+	int leastdayTiny = dragondiet[0][0];
+	int leastdayArson = dragondiet[1][0];
+	int leastdayFrank = dragondiet[2][0];
+	int leasteaten = 0;
+	int leasteatenID = 0;
+	int Tiny = 0;
+	int Arson = 1;
+	int Frank = 2;
+	
+		for (int i = 0; i < numdays; i++)
+		{
+			if (leastdayTiny > dragondiet[0][i])
+			{
+				leastdayTiny = dragondiet[0][i];
+			}
+			if (leastdayArson > dragondiet[1][i])
+			{
+				leastdayArson = dragondiet[1][i];
+			}
+			if (leastdayFrank > dragondiet[2][i])
+			{
+				leastdayFrank = dragondiet[2][i];
+			}
+		}
+
+	leasteaten = (leastdayTiny < leastdayArson < leastdayFrank) ? leastdayTiny : (leastdayArson < leastdayFrank) ? leastdayArson : leastdayFrank;
+	if (leasteaten = leastdayTiny)
+		leasteatenID = (leasteaten = leastdayTiny) ? Tiny : (leasteaten = leastdayArson) ? Arson : Frank;
+	return leasteaten, leasteatenID;
+}
+
+
+int mostamount(int dragondiet[][7])
+{
+	int mostdayTiny = dragondiet[0][0];
+	int mostdayArson = dragondiet[1][0];
+	int mostdayFrank = dragondiet[2][0];
+	int mosteaten = 0;
+	int mosteatenID = 0;
+	int Tiny = 0;
+	int Arson = 1;
+	int Frank = 2;
+	
+		for (int i = 0; i < numdays; i++)
+		{
+			if (mostdayTiny < dragondiet[0][i])
+			{
+				mostdayTiny = dragondiet[0][i];
+			}
+			if (mostdayArson < dragondiet[1][i])
+			{
+				mostdayArson = dragondiet[1][i];
+			}
+			if (mostdayFrank < dragondiet[2][i])
+			{
+				mostdayFrank = dragondiet[2][i];
+			}
+		}
+
+	mosteaten = (mostdayTiny > mostdayArson > mostdayFrank) ? mostdayTiny : (mostdayArson > mostdayFrank) ? mostdayArson : mostdayFrank;
+		mosteatenID = (mosteaten = mostdayTiny) ? Tiny : (mosteaten = mostdayArson) ? Arson : Frank;
+	return mosteaten, mosteatenID;
+}
+
+
+
+
+
+
+
+
+
+
 
 int main()
 {
@@ -203,88 +314,88 @@ int main()
 			cout << personhealth[0] << endl << personhealth[1] << endl << personhealth[2] << endl << personhealth[3] << endl << personhealth[4] << endl;*/
 
 //question 9
-int alltotal = 0;
-int dragondiet[3][7];
-int allaverage = 0;
-int singletotal = 0;
-int singleavg = 0;
-int leasteatenID;
-int mosteatenID;
-//this gives an assignment to all numbers in the dragondiet array
-for (int dragon = 0; dragon < 3; dragon++)
-{	
-	//specifies which dragon the array is geared for
-	if (dragon == 0)
-		cout << "input kg per day for Tiny" << endl;
-	else if (dragon == 1)
-		cout << "input kg per day for Arsen" << endl;
-	else if (dragon == 2)
-		cout << "input kg per day for Frank" << endl;
-	for (int day = 0; day < 7; day++)
-	{
-		int info;
-		cin >> info;
-		dragondiet[dragon][day] = info;
-	//numbers of arrays are now stored
-	}
-
-}
-int leasteaten = dragondiet[0][0];
-int mosteaten = dragondiet[0][0];
-int dragonIDleast = dragondiet[0][0];
-int dragonIDmost = dragondiet[0][0];
-//this is where we math.
-for (int dragon = 0; dragon < 3; dragon++)
-{
-	for (int day = 0; day < 7; day++)
-	{
-		alltotal += dragondiet[dragon][day];
-		//trying to get the ID of the dragon
-		if (leasteaten > dragondiet[dragon][day])
-		{
-			leasteaten = dragondiet[dragon][day];
-		}
-		if (mosteaten < dragondiet[dragon][day])
-		{
-			mosteaten = dragondiet[dragon][day];
-			singletotal += dragondiet[dragon][day];
-		}
-		if (dragondiet[0][day] < dragondiet[1][day] && dragondiet[0][day] < dragondiet[2][day] && dragondiet[0][day] <= dragondiet[0][day])
-		{
-			dragonIDleast = 0;
-		}
-		else if (dragondiet[1][day] < dragondiet[0][day] && dragondiet[1][day] < dragondiet[2][day] && dragondiet[1][day] <= dragondiet[1][day] )
-		{
-			dragonIDleast = 1;
-		}
-		else if (dragondiet[2][day] < dragondiet[0][day] && dragondiet[2][day] < dragondiet[1][day] && dragondiet[2][day] <= dragondiet[2][day] )
-		{
-			dragonIDleast = 2;
-		}
-		if (dragondiet[0][day] > dragondiet[1][day] && dragondiet[0][day] > dragondiet[2][day] && dragondiet[0][day] >= dragondiet[0][day])
-		{
-			dragonIDmost = 0;
-		}
-		else if (dragondiet[1][day] > dragondiet[0][day] && dragondiet[1][day] > dragondiet[2][day] && dragondiet[1][day] >= dragondiet[1][day])
-		{
-			dragonIDmost = 1;
-		}
-		else if (dragondiet[2][day] > dragondiet[0][day] && dragondiet[2][day] > dragondiet[1][day] && dragondiet[2][day] >= dragondiet[2][day])
-		{
-			dragonIDmost = 2;
-		}
-	}
-	
-	
-	singleavg = singletotal / 7;
-	singletotal = 0;
-	cout << "average food eaten by dragon " << dragon << endl << singleavg << endl;
-	singleavg = 0;
-}
-allaverage = alltotal / 7;
-cout <<"average food eaten by all dragons" << endl << allaverage << endl;
-cout << "least amount of food eaten by which dragon: " << endl << "food eaten: " << leasteaten << endl << "dragon: " << dragonIDleast << endl;
-cout << "most amount of food eaten by which dragon: " << endl << "most food eaten: " << mosteaten << endl << "dragon: " << dragonIDmost << endl;
-system("pause");
-	return 0;	
+//int alltotal = 0;
+//int dragondiet[3][7];
+//int allaverage = 0;
+//int singletotal = 0;
+//int singleavg = 0;
+//int leasteatenID;
+//int mosteatenID;
+////this gives an assignment to all numbers in the dragondiet array
+//for (int dragon = 0; dragon < 3; dragon++)
+//{	
+//	//specifies which dragon the array is geared for
+//	if (dragon == 0)
+//		cout << "input kg per day for Tiny" << endl;
+//	else if (dragon == 1)
+//		cout << "input kg per day for Arsen" << endl;
+//	else if (dragon == 2)
+//		cout << "input kg per day for Frank" << endl;
+//	for (int day = 0; day < 7; day++)
+//	{
+//		int info;
+//		cin >> info;
+//		dragondiet[dragon][day] = info;
+//	//numbers of arrays are now stored
+//	}
+//
+//}
+//int leasteaten = dragondiet[0][0];
+//int mosteaten = dragondiet[0][0];
+//int dragonIDleast = dragondiet[0][0];
+//int dragonIDmost = dragondiet[0][0];
+////this is where we math.
+//for (int dragon = 0; dragon < 3; dragon++)
+//{
+//	for (int day = 0; day < 7; day++)
+//	{
+//		alltotal += dragondiet[dragon][day];
+//		//trying to get the ID of the dragon
+//		if (leasteaten > dragondiet[dragon][day])
+//		{
+//			leasteaten = dragondiet[dragon][day];
+//		}
+//		if (mosteaten < dragondiet[dragon][day])
+//		{
+//			mosteaten = dragondiet[dragon][day];
+//			singletotal += dragondiet[dragon][day];
+//		}
+//		if (dragondiet[0][day] < dragondiet[1][day] && dragondiet[0][day] < dragondiet[2][day] && dragondiet[0][day] <= dragondiet[0][day])
+//		{
+//			dragonIDleast = 0;
+//		}
+//		else if (dragondiet[1][day] < dragondiet[0][day] && dragondiet[1][day] < dragondiet[2][day] && dragondiet[1][day] <= dragondiet[1][day] )
+//		{
+//			dragonIDleast = 1;
+//		}
+//		else if (dragondiet[2][day] < dragondiet[0][day] && dragondiet[2][day] < dragondiet[1][day] && dragondiet[2][day] <= dragondiet[2][day] )
+//		{
+//			dragonIDleast = 2;
+//		}
+//		if (dragondiet[0][day] > dragondiet[1][day] && dragondiet[0][day] > dragondiet[2][day] && dragondiet[0][day] >= dragondiet[0][day])
+//		{
+//			dragonIDmost = 0;
+//		}
+//		else if (dragondiet[1][day] > dragondiet[0][day] && dragondiet[1][day] > dragondiet[2][day] && dragondiet[1][day] >= dragondiet[1][day])
+//		{
+//			dragonIDmost = 1;
+//		}
+//		else if (dragondiet[2][day] > dragondiet[0][day] && dragondiet[2][day] > dragondiet[1][day] && dragondiet[2][day] >= dragondiet[2][day])
+//		{
+//			dragonIDmost = 2;
+//		}
+//	}
+//	
+//	
+//	singleavg = singletotal / 7;
+//	singletotal = 0;
+//	cout << "average food eaten by dragon " << dragon << endl << singleavg << endl;
+//	singleavg = 0;
+//}
+//allaverage = alltotal / 7;
+//cout <<"average food eaten by all dragons" << endl << allaverage << endl;
+//cout << "least amount of food eaten by which dragon: " << endl << "food eaten: " << leasteaten << endl << "dragon: " << dragonIDleast << endl;
+//cout << "most amount of food eaten by which dragon: " << endl << "most food eaten: " << mosteaten << endl << "dragon: " << dragonIDmost << endl;
+//system("pause");
+//	return 0;	
 }
