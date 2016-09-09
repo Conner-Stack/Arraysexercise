@@ -231,6 +231,8 @@ for (int dragon = 0; dragon < 3; dragon++)
 }
 int leasteaten = dragondiet[0][0];
 int mosteaten = dragondiet[0][0];
+int dragonIDleast = dragondiet[0][0];
+int dragonIDmost = dragondiet[0][0];
 //this is where we math.
 for (int dragon = 0; dragon < 3; dragon++)
 {
@@ -239,24 +241,50 @@ for (int dragon = 0; dragon < 3; dragon++)
 		alltotal += dragondiet[dragon][day];
 		//trying to get the ID of the dragon
 		if (leasteaten > dragondiet[dragon][day])
+		{
 			leasteaten = dragondiet[dragon][day];
-	
+		}
 		if (mosteaten < dragondiet[dragon][day])
+		{
 			mosteaten = dragondiet[dragon][day];
-	
-		singletotal += dragondiet[dragon][day];
+			singletotal += dragondiet[dragon][day];
+		}
+		if (dragondiet[0][day] < dragondiet[1][day] && dragondiet[0][day] < dragondiet[2][day] && dragondiet[0][day] <= dragondiet[0][day])
+		{
+			dragonIDleast = 0;
+		}
+		else if (dragondiet[1][day] < dragondiet[0][day] && dragondiet[1][day] < dragondiet[2][day] && dragondiet[1][day] <= dragondiet[1][day] )
+		{
+			dragonIDleast = 1;
+		}
+		else if (dragondiet[2][day] < dragondiet[0][day] && dragondiet[2][day] < dragondiet[1][day] && dragondiet[2][day] <= dragondiet[2][day] )
+		{
+			dragonIDleast = 2;
+		}
+		if (dragondiet[0][day] > dragondiet[1][day] && dragondiet[0][day] > dragondiet[2][day] && dragondiet[0][day] >= dragondiet[0][day])
+		{
+			dragonIDmost = 0;
+		}
+		else if (dragondiet[1][day] > dragondiet[0][day] && dragondiet[1][day] > dragondiet[2][day] && dragondiet[1][day] >= dragondiet[1][day])
+		{
+			dragonIDmost = 1;
+		}
+		else if (dragondiet[2][day] > dragondiet[0][day] && dragondiet[2][day] > dragondiet[1][day] && dragondiet[2][day] >= dragondiet[2][day])
+		{
+			dragonIDmost = 2;
+		}
 	}
+	
 	
 	singleavg = singletotal / 7;
 	singletotal = 0;
 	cout << "average food eaten by dragon " << dragon << endl << singleavg << endl;
 	singleavg = 0;
-	
 }
 allaverage = alltotal / 7;
 cout <<"average food eaten by all dragons" << endl << allaverage << endl;
-cout << "least amount of food eaten by which dragon" << endl << "food eaten: " << leasteaten << endl;
-
+cout << "least amount of food eaten by which dragon: " << endl << "food eaten: " << leasteaten << endl << "dragon: " << dragonIDleast << endl;
+cout << "most amount of food eaten by which dragon: " << endl << "most food eaten: " << mosteaten << endl << "dragon: " << dragonIDmost << endl;
 system("pause");
 	return 0;	
 }
